@@ -3,25 +3,164 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CAPTIO Handbook</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <title>CAPTIO Handbook — interno</title>
+  <meta name="description" content="Página única, simples, para seus playbooks internos (texto, imagens e vídeos)." />
   <style>
-    :root { --theme-color: #f59e0b; } /* amber */
-    .app-name-link img { height: 28px; vertical-align: middle; margin-right: 8px; }
+    :root{
+      --bg:#0b0f14; --panel:#0f1520; --card:#111927; --muted:#9aa7b2; --text:#e7eaee; --accent:#f59e0b; --b:#1d2633;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Inter,Arial; color:var(--text); background:var(--bg)}
+    a{color:#ffd166; text-decoration:none} a:hover{opacity:.9}
+    .layout{display:grid; grid-template-columns: 260px 1fr; min-height:100vh}
+    aside{background:var(--panel); border-right:1px solid var(--b); padding:18px; position:sticky; top:0; height:100vh; overflow:auto}
+    main{padding:26px}
+    .brand{display:flex; align-items:center; gap:10px; margin-bottom:16px}
+    .brand svg{display:block}
+    .brand .name{font-weight:800; letter-spacing:.2px}
+    nav a{display:block; padding:8px 10px; border-radius:10px; color:var(--text)}
+    nav a:hover{background:#0b1119}
+    nav .grp{margin:12px 0 6px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.8px}
+    section{background:var(--card); border:1px solid var(--b); border-radius:16px; padding:22px; margin-bottom:18px}
+    h1{margin:0 0 12px; font-size:28px}
+    h2{margin:12px 0 10px; font-size:20px}
+    .sub{color:var(--muted); margin:0 0 12px}
+    pre{background:#0b1119; border:1px solid var(--b); border-radius:12px; padding:12px; overflow:auto}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:14px}
+    .btn{appearance:none; border:1px solid var(--accent); background:linear-gradient(180deg,#202a36,#141b24); color:var(--text); padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer}
+    .row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+    .muted{color:var(--muted)}
+    .two{display:grid; grid-template-columns: 1fr; gap:14px}
+    @media(min-width:960px){ .two{grid-template-columns: 1fr 1fr} }
+    .thumb{border:1px solid var(--b); border-radius:12px; overflow:hidden}
+    .pill{font-size:12px; color:#0b0f14; background:var(--accent); padding:2px 8px; border-radius:999px; font-weight:800}
+    footer{padding:16px; color:var(--muted); text-align:center}
+    .copybox{display:flex; align-items:center; gap:8px}
+    .kbd{background:#0c131c; border:1px solid #13202e; padding:.2rem .45rem; border-radius:8px; color:#c5d2de}
   </style>
 </head>
 <body>
-  <div id="app"></div>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <!-- logo simples inline -->
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ffd166"/></linearGradient></defs>
+          <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#g)"/>
+          <path d="M23 42c-2-2-3-4-3-7s1-5 3-7c2-2 5-3 8-3 3 0 5 1 7 2l-3 4c-1-1-2-1-4-1-4 0-6 2-6 5s2 5 6 5c2 0 3-1 5-2l3 4c-2 2-5 3-8 3-3 0-6-1-8-3Z" fill="#0b0f14"/>
+        </svg>
+        <div class="name">CAPTIO Handbook</div>
+        <span class="pill">v1.0</span>
+      </div>
+      <nav>
+        <div class="grp">Inicio</div>
+        <a href="#instalador">Instalador CAPTIO</a>
+        <a href="#como-usar">Como usar este handbook</a>
+        <div class="grp">Playbooks</div>
+        <a href="#vps">VPS padrão</a>
+        <a href="#chatwoot">Chatwoot (IG/FB)</a>
+        <a href="#evolution">Evolution API</a>
+        <a href="#n8n">n8n</a>
+        <div class="grp">Midia</div>
+        <a href="#midia">Vídeos & imagens</a>
+      </nav>
+    </aside>
+
+    <main>
+      <section id="instalador">
+        <h1>Instalador CAPTIO</h1>
+        <p class="sub">Clique para copiar o comando. <span class="pill">v1.0</span></p>
+        <div class="row">
+          <div class="copybox">
+            <span class="kbd">bash</span>
+            <pre id="cmd"><code>&lt;(curl -fsSL https://raw.githubusercontent.com/cfjacques/captio-setup/v1.0/SetupCaptio)</code></pre>
+          </div>
+          <button id="copy" class="btn">Copiar comando</button>
+        </div>
+      </section>
+
+      <section id="como-usar">
+        <h2>Como usar este handbook</h2>
+        <p class="sub">É um site 100% estático: você só edita este arquivo <code>index.html</code>, não precisa de servidor, Traefik nem Portainer.</p>
+        <ol>
+          <li>Edite os textos das seções abaixo com seus passos e prints.</li>
+          <li>Para publicar grátis, suba este arquivo em um repositório do GitHub e ative <em>GitHub Pages</em>.</li>
+          <li>(Opcional) Aponte um subdomínio (ex.: <code>handbook.captioai.com</code>) via CNAME para o seu Pages.</li>
+        </ol>
+      </section>
+
+      <section id="vps">
+        <h2>VPS padrão (Traefik + Portainer)</h2>
+        <p class="sub">Use quando for montar o ambiente base de um cliente.</p>
+        <ol>
+          <li>Entrar por SSH como <code>root</code> (<code>sudo -i</code>).</li>
+          <li>Atualizar pacotes:
+            <pre><code>apt-get update -y && apt-get upgrade -y && apt-get install -y curl ca-certificates</code></pre>
+          </li>
+          <li>Rodar instalador CAPTIO e escolher <strong>Traefik</strong> e <strong>Portainer</strong> no menu:
+            <pre><code>bash &lt;(curl -fsSL https://raw.githubusercontent.com/cfjacques/captio-setup/v1.0/SetupCaptio)</code></pre>
+          </li>
+        </ol>
+      </section>
+
+      <section id="chatwoot">
+        <h2>Chatwoot (Instagram/Facebook)</h2>
+        <ul>
+          <li>No fluxo do Chatwoot o instalador pergunta (opcional): <code>FB_APP_ID</code>, <code>FB_APP_SECRET</code>, <code>FB_VERIFY_TOKEN</code>, <code>IG_VERIFY_TOKEN</code>.</li>
+          <li>Se preencher, as variáveis entram no YAML antes do deploy. Se não quiser, basta pressionar ENTER para pular.</li>
+        </ul>
+      </section>
+
+      <section id="evolution">
+        <h2>Evolution API</h2>
+        <p>Versão estável usada: <strong>v2.2.3</strong> com <code>CONFIG_SESSION_PHONE_VERSION=2.3000.1023015479</code> e <code>CONFIG_SESSION_PHONE_CLIENT=CAPTIOAI</code>.</p>
+      </section>
+
+      <section id="n8n">
+        <h2>n8n</h2>
+        <p>Notas rápidas do seu uso de n8n aqui.</p>
+      </section>
+
+      <section id="midia">
+        <h2>Vídeos & imagens</h2>
+        <div class="two">
+          <div class="thumb">
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="thumb">
+            <img src="imgs/exemplo.png" alt="Exemplo" style="width:100%; display:block" />
+          </div>
+        </div>
+        <p class="muted">Para trocar a imagem, crie a pasta <code>imgs/</code> no repositório e envie seus arquivos.</p>
+      </section>
+
+      <footer>
+        © CAPTIO AI — <a href="mailto:contato@captioai.com">contato@captioai.com</a>
+      </footer>
+    </main>
+  </div>
+
   <script>
-    window.$docsify = {
-      name: 'CAPTIO Handbook',
-      repo: '',
-      loadSidebar: true,
-      subMaxLevel: 2,
-      homepage: 'README.md',
-    }
+    // Copiar comando
+    (function(){
+      const btn = document.getElementById('copy');
+      const cmd = document.getElementById('cmd').innerText.trim();
+      const full = 'bash ' + cmd;
+      const copy = async (t)=>{
+        try{
+          if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(t); }
+          else { const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+          btn.textContent='Copiado!'; setTimeout(()=>btn.textContent='Copiar comando',1500);
+        }catch{ alert('Copie manualmente.'); }
+      };
+      btn.addEventListener('click',()=>copy(full));
+    })();
+
+    // Scroll suave ao clicar menu
+    document.querySelectorAll('aside nav a').forEach(a=>{
+      a.addEventListener('click', e=>{ e.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'}); });
+    });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 </body>
 </html>
